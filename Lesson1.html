@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 1</title>
+
+    <style>
+      #panel,
+      #flip {
+        padding: 5px;
+        font-size: 18px;
+        text-align: center;
+        background-color: #555;
+        color: white;
+        border: solid 1px #666;
+        border-radius: 3px;
+      }
+
+      #panel {
+        padding: 50px;
+        display: none;
+      }
+    </style>
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+    <script type="text/javascript" src="jquery-3.6.0.js"></script>
+    <script>
+      $(document).ready(function () {
+        //method show hide toggle
+        //Syntax: $(selector).hide(speed,callback);
+        //Syntax: $(selector).show(speed,callback);
+
+        $("#btnShow").click(function () {
+          $("h4").show(1000);
+        });
+        $("#btnHide").click(function () {
+          $("h4").hide(1000);
+        });
+        $("#btnToggle").click(function () {
+          $("h4").toggle(1000);
+        });
+
+        //method fade in out toggle to
+        //Syntax:$(selector).fadeIn(speed,callback);
+
+        $("#btnfadeIn").click(function () {
+          $("#div1").fadeIn();
+          $("#div2").fadeIn("slow");
+          $("#div3").fadeIn(3000);
+        });
+        $("#btnfadeOut").click(function () {
+          $("#div1").fadeOut();
+          $("#div2").fadeOut("slow");
+          $("#div3").fadeOut(3000);
+        });
+        $("#btnfadeToggle").click(function () {
+          $("#div1").fadeToggle();
+          $("#div2").fadeToggle("slow");
+          $("#div3").fadeToggle(3000);
+        });
+        $("#btnFfadeTo").click(function () {
+          $("#div1").fadeTo("slow", 0.15);
+          $("#div2").fadeTo("slow"), 0.1;
+          $("#div3").fadeTo("slow", 0.7);
+        });
+        //menthod slid down up toggle
+        //Syntax:$(selector).slideDown(speed,callback);
+
+        $("#btnslideDown").click(function () {
+          $("#divSlide").slideDown();
+        });
+        $("#btnslideUp").click(function () {
+          $("#divSlide").slideUp();
+        });
+        $("#btnslidToggle").click(function () {
+          $("#divSlide").slideToggle(1000);
+        });
+
+        //method animation
+        //Syntax:$(selector).animate({params},speed,callback);
+        $("#btnAnimation").click(function () {
+          $("#divAnimation").animate(
+            {
+              left: "250px",
+              opacity: "0.5",
+              height: "150px",
+              width: "150px",
+            },
+            "1000"
+          );
+        });
+        $("#btnAnimationToggle").click(function () {
+          $("#divAnimation").animate(
+            {
+              height: "toggle",
+            },
+            "1000"
+          );
+        });
+
+        $("#btnAnimationheight").click(function () {
+          var div = $("#divAnimation");
+          div.animate({ height: "300px", opacity: "0.4" }, "slow");
+          div.animate({ width: "300px", opacity: "0.8" }, "slow");
+          div.animate({ height: "100px", opacity: "0.4" }, "slow");
+          div.animate({ width: "100px", opacity: "0.8" }, "slow");
+        });
+
+        $("#btnAnimationFontSize").click(function () {
+          var div = $("#divAnimation");
+          div.animate({ left: "100px" }, "slow");
+          div.animate({ fontSize: "3em" }, "slow");
+        });
+        //method stop()
+        //syntax: $(selector).stop(stopAll,goToEnd);
+
+        $("#flip").click(function(){
+            $("#panel").slideDown(50000);
+        });
+        $("#stop").click(function(){
+            $("#panel").stop();
+        });
+
+         //method callback
+        //syntax: $(selector).hide(speed,callback);
+        $("#btncallback").click(function(){
+            $("#panel").slideDown(1000,function(){
+                $("#panel").animate({fontSize: "3em"},"slow",function(){
+                    $("#panel").hide(1000,function(){
+                        alert("Hello callback");
+                    });
+                });
+               
+            });
+        });
+
+        $("#btnchaining").click(function(){
+            $("p").css("color", "red").slideUp(2000).slideDown(2000);
+        });
+      });
+      
+
+
+
+    </script>
+  </head>
+  <body>
+    <h2 style="text-align: center">jQuery Effects</h2>
+    <div>
+      <button id="btnShow">Show Text</button>
+      <button id="btnHide">Hide Text</button>
+      <button id="btnToggle">Toggle Text</button>
+      <br />
+      <h4>action hind and Show Toggle text</h4>
+      <hr />
+    </div>
+
+    <div>
+      <button id="btnfadeIn">Fade In</button>
+      <button id="btnfadeOut">Fade Out</button>
+      <button id="btnfadeToggle">Fade Toggle</button>
+      <button id="btnFfadeTo">Fade TO</button>
+      <br />
+      <div
+        id="div1"
+        style="
+          height: 100px;
+          width: 100px;
+          background-color: blue;
+          margin-top: 2px;
+        "
+      ></div>
+
+      <div
+        id="div2"
+        style="
+          height: 100px;
+          width: 100px;
+          background-color: red;
+          margin-top: 2px;
+        "
+      ></div>
+      <div
+        id="div3"
+        style="
+          height: 100px;
+          width: 100px;
+          background-color: green;
+          margin-top: 2px;
+        "
+      ></div>
+      <hr />
+    </div>
+
+    <div>
+      <button id="btnslideDown">Slide Down</button>
+      <button id="btnslideUp">Slide Up</button>
+      <button id="btnslidToggle">Slide Toggle</button>
+
+      <br />
+      <div
+        id="divSlide"
+        style="
+          height: 100px;
+          width: 800px;
+          background-color: blue;
+          margin-top: 2px;
+          font-size: medium;
+          color: aliceblue;
+          text-align: center;
+          padding-top: 10px;
+        "
+      >
+        Hello world!
+      </div>
+    </div>
+    <hr />
+    <div>
+      <button id="btnAnimation">Animaton</button>
+      <button id="btnAnimationToggle">Animaton show hide Toggle</button>
+      <button id="btnAnimationheight">Animaton Height width</button>
+      <button id="btnAnimationFontSize">
+        Animaton move to right and fontsize
+      </button>
+      <div
+        id="divAnimation"
+        style="
+          background: #98bf21;
+          height: 100px;
+          width: 100px;
+          position: absolute;
+          margin-top: 4px;
+        "
+      >
+        Hello
+      </div>
+      <br />
+    </div>
+    <br />
+    <div style="margin-top: 100px">
+      <hr />
+      <h1><h1>
+      <button id="stop">Stop sliding</button>
+      <button id="btncallback">callback</button>   
+
+      <div id="flip">Click to slide down panel</div>
+      <div id="panel">Hello world!</div>
+    </div>
+
+    <div style="margin-top: 100px">
+        <hr />
+        <h1><h1>
+        <button id="btnchaining">Chaining</button>
+         
+  
+      <p>usingjQuery Method Chaining</p>
+      </div>
+  </body>
+</html>

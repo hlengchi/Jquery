@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery HTML</title>
+    <script src="jquery-3.6.0.js"></script>
+    <script>
+      $(document).ready(function () {
+        //method for get content text html and val
+        $("#btn1").click(function () {
+          alert("Text: " + $("#test").text());
+        });
+        $("#btn2").click(function () {
+          alert("HTML: " + $("#test").html());
+        });
+        $("#btnShowValue").click(function () {
+          alert("My Text:" + $("#test1").val());
+        });
+        $("#btnattr").click(function () {
+          alert("My href:" + $("#w3s").attr("href"));
+        });
+
+        //method for set content text html and val
+        $("#btnText").click(function () {
+          $("#testp1").text("Hello world!");
+        });
+        $("#btnhtml").click(function () {
+          $("#testp2").html("<b>Hello world!</b>");
+        });
+        $("#btnValue").click(function () {
+          $("#testp3").val("Dolly Duck");
+        });
+        //use method text and function
+        $("#btnShowText1").click(function () {
+          $("#testshowp1").text(function (i, origText) {
+            return (
+              "Old text: " +
+              origText +
+              " New text: Hello world! (index: " +
+              i +
+              ")"
+            );
+          });
+        });
+
+        $("#btnShowText2").click(function () {
+          $("#testshowp2").html(function (i, origText) {
+            return (
+              "Old html: " +
+              origText +
+              " New html: Hello <b>world!</b> (index: " +
+              i +
+              ")"
+            );
+          });
+        });
+
+        $("#btnChange").click(function () {
+          $("#lblUrl").attr({
+            href: "https://www.w3schools.com/jquery/",
+            title: "W3Schools jQuery Tutorial",
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Get Content - text(), html(), and val()</h1>
+    <p id="test">This is some <b>bold</b> text in a paragraph.</p>
+
+    <button id="btn1">Show Text</button>
+    <button id="btn2">Show HTML</button><br />
+    <hr />
+    <p>Name: <input type="text" id="test1" value="Mickey Mouse" /></p>
+
+    <button id="btnShowValue">Show Value</button><br />
+    <hr />
+    <p><a href="https://www.w3schools.com" id="w3s">W3Schools.com</a></p>
+
+    <button id="btnattr">Show href Value Get Attributes</button>
+    <br />
+    <hr />
+    <h1>Set Content - text(), html(), and val()</h1>
+    <p id="testp1">This is a paragraph.</p>
+    <p id="testp2">This is another paragraph.</p>
+
+    <p>Input field: <input type="text" id="testp3" value="Mickey Mouse" /></p>
+
+    <button id="btnText">Set Text</button>
+    <button id="btnhtml">Set HTML</button>
+    <button id="btnValue">Set Value</button><br />
+    <p id="testshowp1">This is a <b>bold</b> paragraph.</p>
+    <p id="testshowp2">This is another <b>bold</b> paragraph.</p>
+
+    <button id="btnShowText1">Show Old/New Text</button>
+    <button id="btnShowText2">Show Old/New HTML</button><br />
+    <p><a href="https://www.w3schools.com" id="lblUrl">W3Schools.com</a></p>
+
+    <button id="btnChange">Change href Value</button>
+
+    <p>
+      Mouse over the link (or click on it) to see that the value of the href
+      attribute has changed.
+    </p>
+  </body>
+</html>
